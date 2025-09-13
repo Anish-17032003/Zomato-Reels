@@ -7,6 +7,8 @@ const cors=require('cors');
 const app=express();
 app.use(cookieParser()) 
 app.use(express.json())  
+
+
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
 const allowedOrigins = [FRONTEND_URL, 'http://localhost:5173'];
 app.use(cors({

@@ -12,7 +12,7 @@ const UserRegister = () => {
         const fullname=e.target.fullname.value;
         const email=e.target.email.value;
         const password=e.target.password.value;
-        const response=await axios.post('http://localhost:3000/api/auth/user/register',{
+        const response=await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/user/register`,{
             fullname, email, password
     },{withCredentials:true})
     console.log(response.data);
