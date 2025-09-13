@@ -10,13 +10,12 @@ async function createFood(req,res){
         
     const fileUploadResult=await storageService.uploadFile(req.file.buffer,uuid())  //package for storimg unique id npm i uuid
     
-    const foodItem=await foodModel.create({
-        name:req.body.name,
-        description:req.body.description,
-        video:fileUploadResult.url,
-        foodPartner:req.foodPartner._id
-
-    })
+    const foodItem = await foodModel.create({
+  name: req.body.name,
+  description: req.body.description,
+  video: fileUploadResult.url,  // public URL from ImageKit
+  foodPartner: req.foodPartner._id
+});
     res.status(201).json({
         message:"Food item created successfully",
         food: foodItem
