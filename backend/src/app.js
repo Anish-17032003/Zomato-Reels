@@ -10,7 +10,7 @@ app.use(express.json())
 
 
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
-const allowedOrigins = [FRONTEND_URL, 'http://localhost:5173'];
+const allowedOrigins = [FRONTEND_URL, 'https://zomato-reels-frontend5.onrender.com'];
 app.use(cors({
     origin: allowedOrigins,
     credentials: true
