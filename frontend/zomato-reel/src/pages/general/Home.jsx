@@ -10,7 +10,7 @@
         useEffect(() => {
     console.log("API URL:", process.env.REACT_APP_API_URL);
 
-    axios.get(`${process.env.REACT_APP_API_URL}/api/food`, { withCredentials: true })
+    axios.get('https://zomato-reels-backend5.onrender.com/api/food', { withCredentials: true })
         .then(response => {
             console.log("Food items:", response.data.foodItems);
             setVideos(response.data.foodItems);
