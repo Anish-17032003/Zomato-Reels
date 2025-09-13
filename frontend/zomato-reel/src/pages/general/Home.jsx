@@ -8,7 +8,7 @@
         // Autoplay behavior is handled inside ReelFeed
 
         useEffect(() => {
-    console.log("API URL:", process.env.REACT_APP_API_URL);
+  
 
     axios.get('https://zomato-reels-backend5.onrender.com/api/food', { withCredentials: true })
         .then(response => {
@@ -23,7 +23,7 @@
 
         async function likeVideo(item) {
             try {
-                const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/food/like`, { foodId: item._id }, { withCredentials: true })
+                const response = await axios.post('https://zomato-reels-backend5.onrender.com/api/food/like', { foodId: item._id }, { withCredentials: true })
 
                 const serverCount = response?.data?.likeCount
                 const liked = response?.data?.like
@@ -50,7 +50,7 @@
 
         async function saveVideo(item) {
             try {
-                const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/food/save`, { foodId: item._id }, { withCredentials: true })
+                const response = await axios.post(`https://zomato-reels-backend5.onrender.com/api/food/save`, { foodId: item._id }, { withCredentials: true })
 
                 const serverCount = response?.data?.saveCount
                 const saved = response?.data?.save
