@@ -6,10 +6,12 @@ const foodPartnerRoutes=require('./routes/food-partner.routes');
 const cors=require('cors');
 const app=express();
 app.use(cookieParser()) 
-app.use(express.json())  //yeh tumahara jo data frontend se ata h use readable bnata h....
+app.use(express.json())  
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
+const allowedOrigins = [FRONTEND_URL, 'http://localhost:5173'];
 app.use(cors({
-    origin:["http://localhost:5173"],
-    credentials:true
+    origin: allowedOrigins,
+    credentials: true
 }))
 app.get('/',function(req,res){
     res.send("hello world");

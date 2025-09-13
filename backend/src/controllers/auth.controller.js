@@ -25,7 +25,14 @@ async function registerUser(req,res) {
     const token=jwt.sign({
         id:user ._id  //id unique hoti h isliye hum unique data dete h
     },process.env.JWT_SECRET)
-    res.cookie("token",token)
+    // cookie options: httpOnly always, secure & sameSite none for production HTTPS frontend
+    const cookieOptions = { httpOnly: true };
+    const frontendUrl = process.env.FRONTEND_URL || '';
+    if (frontendUrl.startsWith('https://')) {
+        cookieOptions.secure = true;
+        cookieOptions.sameSite = 'none';
+    }
+    res.cookie("token", token, cookieOptions)
     res.status(201).json({
         message:"User registered successfully",
         user:{
@@ -58,7 +65,13 @@ const token=jwt.sign({
     id:user._id,
 },process.env.JWT_SECRET)  //JWT_SECRET ko hum jab tak use nhi kr skte jab tk hamare pass inka dotenv package na ho nhi to inki value undefined aygi
  
-res.cookie("token",token)
+const cookieOptions = { httpOnly: true };
+const frontendUrl = process.env.FRONTEND_URL || '';
+if (frontendUrl.startsWith('https://')) {
+    cookieOptions.secure = true;
+    cookieOptions.sameSite = 'none';
+}
+res.cookie("token",token,cookieOptions)
 res.status(201).json({
         message:"User logged in successfully",
         user:{
@@ -96,7 +109,13 @@ async function registerFoodPartner(req,res) {
     const token=jwt.sign({
         id:foodPartner._id
     },process.env.JWT_SECRET)
-    res.cookie("token",token);
+    const cookieOptionsFP = { httpOnly: true };
+    const frontendUrlFP = process.env.FRONTEND_URL || '';
+    if (frontendUrlFP.startsWith('https://')) {
+        cookieOptionsFP.secure = true;
+        cookieOptionsFP.sameSite = 'none';
+    }
+    res.cookie("token",token,cookieOptionsFP);
     res.status(201).json({
         message:"Food partner registered successfully",
         foodPartner:{
@@ -127,7 +146,13 @@ async function loginFoodPartner(req,res) {
     const token=jwt.sign({
         id:foodPartner._id
     },process.env.JWT_SECRET)
-    res.cookie("token",token);
+    const cookieOptionsLoginFP = { httpOnly: true };
+    const frontendUrlLoginFP = process.env.FRONTEND_URL || '';
+    if (frontendUrlLoginFP.startsWith('https://')) {
+        cookieOptionsLoginFP.secure = true;
+        cookieOptionsLoginFP.sameSite = 'none';
+    }
+    res.cookie("token",token,cookieOptionsLoginFP);
     res.status(200).json({
         message:"Food partner logged in successfully",
         foodPartner:{
