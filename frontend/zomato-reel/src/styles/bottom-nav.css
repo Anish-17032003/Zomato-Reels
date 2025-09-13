@@ -1,0 +1,68 @@
+@import './main.css';
+
+.bottom-nav {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 14px; /* lift above OS nav */
+    height: 56px; /* slightly shorter so labels fit */
+    background: rgba(0,0,0,0.40);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    z-index: 9999; /* place above overlays */
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+}
+
+.bottom-nav__inner {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 8px;
+    padding-bottom: 70px;
+}
+
+.bottom-nav__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    gap: 2px;
+}
+
+.bottom-nav__item.is-active {
+    color: var(--color-text);
+}
+
+.bottom-nav__icon {
+    line-height: 0;
+    display: block;
+}
+
+.bottom-nav__icon svg{ width: 22px; height: 22px; }
+
+.bottom-nav__item {
+    /* keep items centered vertically */
+    padding: 0;
+}
+
+.bottom-nav__label {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Safe area for iOS */
+@supports(padding: max(0px)) {
+    .bottom-nav {
+        padding-bottom: max(env(safe-area-inset-bottom), 0px);
+    }
+}

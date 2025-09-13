@@ -1,0 +1,155 @@
+
+/* @import "./main.css"; */
+
+*{
+    padding-top:5px ;
+}
+/* Avoid global layout side-effects */
+* { box-sizing: border-box; }
+
+/* Map missing local variable names to theme variables (safe fallbacks) */
+:root {
+  --color-surface: var(--card, #fff);
+  --color-surface-alt: var(--input-bg, #f7f8fb);
+  --color-border: var(--input-border, rgba(0,0,0,0.06));
+  --color-text: var(--text, #0f1724);
+  --color-text-secondary: var(--muted, #6b7280);
+  --radius-md: 10px;
+  --shadow-sm: 0 8px 24px rgba(2,6,23,0.06);
+  --space-3: 0.5rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+}
+
+/* Layout container */
+.profile-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-6) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Header block */
+.profile-header {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.profile-meta {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--color-surface-alt);
+  border: 2px solid var(--color-border);
+}
+
+.profile-info { display: grid; gap: var(--space-3); }
+
+/* Pills */
+.profile-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  width: fit-content;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-business { font-size: 1.25rem; font-weight: 700; }
+
+
+/* Stats */
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+  border-top: 1px dashed var(--color-border);
+  padding-top: var(--space-6);
+}
+
+.profile-stat {
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-items: center;
+  gap: var(--space-2);
+}
+
+.profile-stat-label {
+  font-size: 1.15rem;
+  color: var(--color-text-secondary);
+}
+
+.profile-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+/* Separator line under header (as in wireframe) */
+.profile-sep {
+  display: block;
+  height: 1px;
+  border: none; /* remove default UA hr border */
+  background-color: var(--color-border, rgba(255,255,255,0.08));
+  margin: 0.6rem 0;
+  width: 100%;
+}
+
+/* Grid of videos */
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem; /* space between video tiles */
+}
+
+.profile-grid-item {
+  border: none;
+  aspect-ratio: 3 / 4;
+  border-radius: 8px; /* rounded corners for each tile */
+  overflow: hidden; /* ensure video respects the tile rounding */
+  background: var(--color-surface-alt);
+}
+
+.profile-grid-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .profile-meta { grid-template-columns: 96px 1fr; }
+  .profile-avatar { width: 96px; height: 96px; }
+}
+
+@media (max-width: 680px) {
+
+}
+
+@media (max-width: 420px) {
+  .profile-meta { grid-template-columns: 72px 1fr; }
+  .profile-avatar { width: 72px; height: 72px; }
+  .profile-stats { gap: var(--space-4); }
+  .profile-stat-label { font-size: 1rem; }
+  .profile-stat-value { font-size: 1.5rem; }
+}

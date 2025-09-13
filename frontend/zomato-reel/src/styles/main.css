@@ -1,0 +1,178 @@
+@import './variables.css';
+
+* {
+  box-sizing: border-box
+}
+
+html,
+body,
+#root {
+  height: 100%
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  background: var(--bg);
+  color: var(--text)
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.06)
+}
+
+.brand h1 {
+  margin: 0 0 8px 0
+}
+
+.lead {
+  color: var(--muted);
+  margin-bottom: 12px
+}
+
+form {
+  display: grid;
+  gap: 10px
+}
+
+label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 6px
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text)
+}
+
+.row {
+  display: flex;
+  gap: 8px
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  text-align: center
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid var(--input-border);
+  color: var(--text)
+}
+
+/* Reels / full-screen vertical snapping */
+.reels-container {
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reel {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  scroll-snap-align: start;
+  background: #000;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.reel-media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.75);
+}
+
+.reel-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: black;
+}
+
+.reel-overlay {
+  position: absolute;
+  top: 18px; /* top area */
+  left: 16px;
+  right: 16px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  pointer-events: none; /* allow clicks to pass through except buttons */
+}
+
+.reel-desc {
+  max-width: 80%;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  margin: 0;
+  pointer-events: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.visit-btn {
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.95);
+  color: #111;
+  padding: 8px 12px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ensure overlay text is readable on small screens */
+@media (max-width: 640px) {
+  .reel-desc {
+    font-size: 0.95rem;
+  }
+  .reel-overlay {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+  }
+}
+
+.muted {
+  color: var(--muted)
+}
+/* (kept single main.css contents - duplicate block removed) */
