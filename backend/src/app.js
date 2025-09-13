@@ -12,9 +12,9 @@ app.use(express.json())
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
 const allowedOrigins = [FRONTEND_URL, 'https://zomato-reels-frontend5.onrender.com'];
 app.use(cors({
-    origin: allowedOrigins,
-    credentials: true
-}))
+  origin: 'https://zomato-reels-frontend5.onrender.com',
+  credentials: true,   // if using cookies/auth
+}));
 app.get('/',function(req,res){
     res.send("hello world");
 })
