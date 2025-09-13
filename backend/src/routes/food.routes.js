@@ -16,7 +16,7 @@ router.post('/',authMiddleware.authFoodPartnerMiddleware,upload.single("video"),
 
 /* GET /api/food/ [protected ] yeh hum bnaynge users ke liye ki jab user scroll krenge to jo jo nayi videos ayngi scroll krte krte wo sari videos ka data lane ke liye yeh api madat kregi aur yeh bhi protected banegi */
 
-router.get('/',authMiddleware.authUserMiddleware,foodController.getFoodItems); 
+router.get('/',foodController.getFoodItems); 
 
 
 router.post('/like',authMiddleware.authUserMiddleware,foodController.likeFood);
