@@ -9,8 +9,8 @@ app.use(cookieParser())
 app.use(express.json())  
 
 
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
-const allowedOrigins = [FRONTEND_URL, 'https://zomato-reels-frontend5.onrender.com'];
+const FRONTEND_URL = 'https://zomato-reels-frontend5.onrender.com/' || 'http://localhost:5173';
+const allowedOrigins = [FRONTEND_URL, 'http://localhost:5173'];
 app.use(cors({
   origin: 'https://zomato-reels-frontend5.onrender.com',
   credentials: true,   // if using cookies/auth
