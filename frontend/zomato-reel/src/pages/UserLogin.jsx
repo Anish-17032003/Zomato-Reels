@@ -14,7 +14,7 @@ const UserLogin = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/auth/user/login`,
+        'https://zomato-reels-backend5.onrender.com/api/auth/user/login',
         { email, password },
         { withCredentials: true }
       );
