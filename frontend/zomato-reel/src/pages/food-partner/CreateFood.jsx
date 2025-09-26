@@ -56,7 +56,7 @@ const CreateFood = () => {
         formData.append('description', description);
         formData.append("video", videoFile);
 
-        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/food`, formData, {
+        const response = await axios.post('https://zomato-reels-backend5.onrender.com/api/food', formData, {
             withCredentials: true,
         })
 
