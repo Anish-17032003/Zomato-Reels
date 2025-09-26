@@ -50,7 +50,7 @@
 
         async function saveVideo(item) {
             try {
-                const response = await axios.post(`https://zomato-reels-backend5.onrender.com/api/food/save`, { foodId: item._id }, { withCredentials: true })
+                const response = await axios.post('https://zomato-reels-backend5.onrender.com/api/food/save', { foodId: item._id }, { withCredentials: true })
 
                 const serverCount = response?.data?.saveCount
                 const saved = response?.data?.save
