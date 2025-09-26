@@ -15,7 +15,7 @@ const PartnerRegister = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/auth/food-partner/register`,
+        'https://zomato-reels-backend5.onrender.com/api/auth/food-partner/register',
         { name, email, password },
         { withCredentials: true }
       );
