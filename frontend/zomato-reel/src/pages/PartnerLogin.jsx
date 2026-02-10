@@ -43,9 +43,7 @@ const PartnerLogin = () => {
             <button className="btn" type="submit">Sign in</button>
             <Link to="/food-partner/register" className="btn secondary">Create account</Link>
           </div>
-          <p className="muted small" style={{marginTop:12}}>
-            Or register as a <Link to="/user/register">normal user</Link>
-          </p>
+          
         </form>
       </div>
     </div>

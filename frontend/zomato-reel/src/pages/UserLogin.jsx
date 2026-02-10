@@ -49,9 +49,7 @@ const UserLogin = () => {
             <button className="btn" type="submit">Sign in</button>
             <Link to="/user/register" className="btn secondary">Create account</Link>
           </div>
-          <p className="muted small" style={{marginTop:12}}>
-            Or register as a <Link to="/food-partner/register">food partner</Link>
-          </p>
+  
         </form>
       </div>
     </div>
