@@ -3,6 +3,19 @@ const foodPartnerModel=require('../models/foodpartner.model');
 const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
 
+// helper to build cookie options consistently
+function makeCookieOptions() {
+    const opts = { httpOnly: true };
+    const isProd = process.env.NODE_ENV === 'production';
+    if (isProd) {
+        opts.secure = true;
+        opts.sameSite = 'none';
+    } else {
+        opts.sameSite = 'lax';
+    }
+    return opts;
+}
+
 async function registerUser(req,res) {
     const {fullname,email,password}=req.body;
     const userAlreadyExists= await userModel.findOne({
@@ -26,13 +39,7 @@ async function registerUser(req,res) {
         id:user ._id  //id unique hoti h isliye hum unique data dete h
     },process.env.JWT_SECRET)
     // cookie options: httpOnly always, secure & sameSite none for production HTTPS frontend
-    const cookieOptions = { httpOnly: true };
-    const frontendUrl = process.env.FRONTEND_URL || '';
-    if (frontendUrl.startsWith('https://')) {
-        cookieOptions.secure = true;
-        cookieOptions.sameSite = 'none';
-    }
-    res.cookie("token", token, cookieOptions)
+    res.cookie("token", token, makeCookieOptions())
     res.status(201).json({
         message:"User registered successfully",
         user:{
@@ -65,13 +72,7 @@ const token=jwt.sign({
     id:user._id,
 },process.env.JWT_SECRET)  //JWT_SECRET ko hum jab tak use nhi kr skte jab tk hamare pass inka dotenv package na ho nhi to inki value undefined aygi
  
-const cookieOptions = { httpOnly: true };
-const frontendUrl = process.env.FRONTEND_URL || '';
-if (frontendUrl.startsWith('https://')) {
-    cookieOptions.secure = true;
-    cookieOptions.sameSite = 'none';
-}
-res.cookie("token",token,cookieOptions)
+res.cookie("token", token, makeCookieOptions())
 res.status(201).json({
         message:"User logged in successfully",
         user:{
@@ -109,13 +110,7 @@ async function registerFoodPartner(req,res) {
     const token=jwt.sign({
         id:foodPartner._id
     },process.env.JWT_SECRET)
-    const cookieOptionsFP = { httpOnly: true };
-    const frontendUrlFP = process.env.FRONTEND_URL || '';
-    if (frontendUrlFP.startsWith('https://')) {
-        cookieOptionsFP.secure = true;
-        cookieOptionsFP.sameSite = 'none';
-    }
-    res.cookie("token",token,cookieOptionsFP);
+    res.cookie("token", token, makeCookieOptions());
     res.status(201).json({
         message:"Food partner registered successfully",
         foodPartner:{
@@ -146,13 +141,7 @@ async function loginFoodPartner(req,res) {
     const token=jwt.sign({
         id:foodPartner._id
     },process.env.JWT_SECRET)
-    const cookieOptionsLoginFP = { httpOnly: true };
-    const frontendUrlLoginFP = process.env.FRONTEND_URL || '';
-    if (frontendUrlLoginFP.startsWith('https://')) {
-        cookieOptionsLoginFP.secure = true;
-        cookieOptionsLoginFP.sameSite = 'none';
-    }
-    res.cookie("token",token,cookieOptionsLoginFP);
+    res.cookie("token", token, makeCookieOptions());
     res.status(200).json({
         message:"Food partner logged in successfully",
         foodPartner:{
