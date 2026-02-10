@@ -8,7 +8,7 @@ const RequireAuth = ({ children }) => {
 
   useEffect(() => {
     let mounted = true;
-    axios.get('http://localhost:3000/api/auth/me', { withCredentials: true })
+    axios.get('https://zomato-reels-1-backend.onrender.com/api/auth/me', { withCredentials: true })
       .then(() => {
         if (mounted) setLoading(false);
       })

@@ -12,7 +12,7 @@ app.use(express.json())
 // const FRONTEND_URL = 'https://zomato-reels-frontend5.onrender.com/' || 'http://localhost:5173';
 // const allowedOrigins = [FRONTEND_URL, 'http://localhost:5173'];
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://zomato-reels-1-frontend.onrender.com',
   credentials: true,   // if using cookies/auth
 }));
 app.get('/',function(req,res){

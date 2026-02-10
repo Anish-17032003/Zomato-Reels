@@ -12,7 +12,7 @@
         useEffect(() => {
   
 
-    axios.get('http://localhost:3000/api/food/home', { withCredentials: true })
+    axios.get('https://zomato-reels-1-backend.onrender.com/api/food/home', { withCredentials: true })
         .then(response => {
             console.log("Food items:", response.data.foodItems);
             setVideos(response.data.foodItems);
@@ -31,7 +31,7 @@
 
         async function likeVideo(item) {
             try {
-                const response = await axios.post('http://localhost:3000/api/food/like', { foodId: item._id }, { withCredentials: true })
+                const response = await axios.post('https://zomato-reels-1-backend.onrender.com/api/food/like', { foodId: item._id }, { withCredentials: true })
 
                 const serverCount = response?.data?.likeCount
                 const liked = response?.data?.like
@@ -58,7 +58,7 @@
 
         async function saveVideo(item) {
             try {
-                const response = await axios.post('http://localhost:3000/api/food/save', { foodId: item._id }, { withCredentials: true })
+                const response = await axios.post('https://zomato-reels-1-backend.onrender.com/api/food/save', { foodId: item._id }, { withCredentials: true })
 
                 const serverCount = response?.data?.saveCount
                 const saved = response?.data?.save
@@ -78,7 +78,7 @@
 
         async function handleLogout() {
             try {
-                await axios.get('http://localhost:3000/api/auth/user/logout', { withCredentials: true });
+                await axios.get('https://zomato-reels-1-backend.onrender.com/api/auth/user/logout', { withCredentials: true });
             } catch (err) {
                 console.error('Logout failed', err);
             } finally {

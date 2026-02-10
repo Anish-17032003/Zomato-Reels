@@ -15,7 +15,7 @@ const CreateFood = () => {
 
     async function handleLogout() {
         try {
-            await axios.get('http://localhost:3000/api/auth/user/logout', { withCredentials: true });
+            await axios.get('https://zomato-reels-1-backend.onrender.com/api/auth/user/logout', { withCredentials: true });
         } catch (err) {
             console.error('Logout failed', err);
         } finally {
@@ -66,7 +66,7 @@ const CreateFood = () => {
         formData.append('description', description);
         formData.append("video", videoFile);
 
-        const response = await axios.post('http://localhost:3000/api/food/home', formData, {
+        const response = await axios.post('https://zomato-reels-1-backend.onrender.com/api/food/home', formData, {
             withCredentials: true,
         })
 
