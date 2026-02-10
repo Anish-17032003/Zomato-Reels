@@ -17,11 +17,11 @@
             console.log("Food items:", response.data.foodItems);
             setVideos(response.data.foodItems);
         })
-        .catch(err => {
+            .catch(err => {
             console.error("Error fetching food:", err);
             if (err?.response?.status === 401) {
-                // session invalid — force full navigation to login (replace history)
-                window.location.replace('/user/login');
+                // session invalid — use client-side navigation to avoid server 404
+                navigate('/user/login', { replace: true });
             }
         });
 }, []);
@@ -82,8 +82,8 @@
             } catch (err) {
                 console.error('Logout failed', err);
             } finally {
-                // use a full replace so the protected page isn't reachable via back
-                window.location.replace('/user/login');
+                // use client-side navigation so the router handles the route
+                navigate('/user/login', { replace: true });
             }
         }
 

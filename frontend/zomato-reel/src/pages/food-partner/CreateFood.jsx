@@ -19,7 +19,7 @@ const CreateFood = () => {
         } catch (err) {
             console.error('Logout failed', err);
         } finally {
-            window.location.replace('/user/login');
+            navigate('/user/login', { replace: true });
         }
     }
 
