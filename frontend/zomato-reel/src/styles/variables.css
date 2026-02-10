@@ -1,0 +1,43 @@
+/* Centralized CSS variables with system light/dark support */
+:root{
+  --bg: #ffffff;
+  --card: #f7f8fb;
+  --text: #0b1220;
+  --muted: #6b7280;
+  --accent: #ff5a5f;
+  --input-bg: #ffffff;
+  --input-border: #e6e6e9;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#081020;
+    --card:#0f1724;
+    --text:#e6eef8;
+    --muted:#98a6b2;
+    --accent:#ff7a78;
+    --input-bg:#071022;
+    --input-border:#1f2a36;
+  }
+}
+/* theme variables centralized */
+:root {
+  --bg: #ffffff;
+  --card: #f8fafc;
+  --text: #0f1724;
+  --muted: #6b7280;
+  --accent: #ff5a5f;
+  --input-bg: #ffffff;
+  --input-border: #e6e6e9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #071021;
+    --card: #0e1720;
+    --text: #e6eef8;
+    --muted: #97a6b2;
+    --accent: #ff7a78;
+    --input-bg: #071022;
+    --input-border: #1f2a36;
+  }
+}
