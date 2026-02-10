@@ -84,7 +84,7 @@ res.status(201).json({
 }
 
 function logoutUser(req,res){
-    res.clearCookie("token");
+    res.clearCookie("token", makeCookieOptions());
     res.status(200).json({
         message:"User Logged out successfully"
     });
@@ -153,7 +153,7 @@ async function loginFoodPartner(req,res) {
 }
 
 function logoutFoodPartner(req,res) {
-    res.clearCookie("token");
+    res.clearCookie("token", makeCookieOptions());
     res.status(200).json({
         message:"Food partner logged out successfully"
     })
