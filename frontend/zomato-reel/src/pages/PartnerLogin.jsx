@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 
 const PartnerLogin = () => {
@@ -12,11 +12,7 @@ const PartnerLogin = () => {
     const password = e.target.elements?.password?.value || '';
 
     try {
-      const response = await axios.post(
-        'https://zomato-reels-1-backend.onrender.com/api/auth/food-partner/login',
-        { email, password },
-        { withCredentials: true }
-      );
+      const response = await api.post('/api/auth/food-partner/login', { email, password });
       console.log('partner login success', response.data);
       navigate('/create-food');
     } catch (err) {

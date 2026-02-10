@@ -1,5 +1,5 @@
     import React, { useEffect, useState } from 'react'
-    import axios from 'axios';
+    import api from '../../utils/api'
     import '../../styles/reels.css'
     import ReelFeed from '../../component/ReelFeed'
     import { useNavigate } from 'react-router-dom';
@@ -12,18 +12,9 @@
         useEffect(() => {
   
 
-    axios.get('https://zomato-reels-1-backend.onrender.com/api/food/home', { withCredentials: true })
-        .then(response => {
-            console.log("Food items:", response.data.foodItems);
-            setVideos(response.data.foodItems);
-        })
-            .catch(err => {
-            console.error("Error fetching food:", err);
-            if (err?.response?.status === 401) {
-                // session invalid — use client-side navigation to avoid server 404
-                navigate('/user/login', { replace: true });
-            }
-        });
+    api.get('/api/food/home')
+        .then(response => { setVideos(response.data.foodItems); })
+        .catch(err => { console.error("Error fetching food:", err); if (err?.response?.status === 401) navigate('/user/login', { replace: true }); });
 }, []);
 
 
@@ -31,7 +22,7 @@
 
         async function likeVideo(item) {
             try {
-                const response = await axios.post('https://zomato-reels-1-backend.onrender.com/api/food/like', { foodId: item._id }, { withCredentials: true })
+                const response = await api.post('/api/food/like', { foodId: item._id })
 
                 const serverCount = response?.data?.likeCount
                 const liked = response?.data?.like
@@ -58,7 +49,7 @@
 
         async function saveVideo(item) {
             try {
-                const response = await axios.post('https://zomato-reels-1-backend.onrender.com/api/food/save', { foodId: item._id }, { withCredentials: true })
+                const response = await api.post('/api/food/save', { foodId: item._id })
 
                 const serverCount = response?.data?.saveCount
                 const saved = response?.data?.save
@@ -78,7 +69,7 @@
 
         async function handleLogout() {
             try {
-                await axios.get('https://zomato-reels-1-backend.onrender.com/api/auth/user/logout', { withCredentials: true });
+                await api.get('/api/auth/user/logout');
             } catch (err) {
                 console.error('Logout failed', err);
             } finally {

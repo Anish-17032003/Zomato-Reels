@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 
 const RequireAuth = ({ children }) => {
   const navigate = useNavigate();
@@ -8,13 +8,9 @@ const RequireAuth = ({ children }) => {
 
   useEffect(() => {
     let mounted = true;
-    axios.get('https://zomato-reels-1-backend.onrender.com/api/auth/me', { withCredentials: true })
-      .then(() => {
-        if (mounted) setLoading(false);
-      })
-      .catch(() => {
-        if (mounted) navigate('/user/login', { replace: true });
-      });
+    api.get('/api/auth/me')
+      .then(() => { if (mounted) setLoading(false); })
+      .catch(() => { if (mounted) navigate('/user/login', { replace: true }); });
     return () => { mounted = false; };
   }, [navigate]);
 

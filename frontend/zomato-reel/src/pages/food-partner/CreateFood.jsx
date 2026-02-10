@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import axios from 'axios';
+import api from '../../utils/api';
 import '../../styles/create-food.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ const CreateFood = () => {
 
     async function handleLogout() {
         try {
-            await axios.get('https://zomato-reels-1-backend.onrender.com/api/auth/user/logout', { withCredentials: true });
+            await api.get('/api/auth/user/logout');
         } catch (err) {
             console.error('Logout failed', err);
         } finally {
@@ -66,9 +66,7 @@ const CreateFood = () => {
         formData.append('description', description);
         formData.append("video", videoFile);
 
-        const response = await axios.post('https://zomato-reels-1-backend.onrender.com/api/food/home', formData, {
-            withCredentials: true,
-        })
+        const response = await api.post('/api/food/home', formData)
 
         console.log(response.data);
         navigate("/home"); // Redirect to home or another page after successful creation
