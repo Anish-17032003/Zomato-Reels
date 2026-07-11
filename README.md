@@ -29,3 +29,6 @@ A full-stack web application inspired by Zomato reels where users can scroll thr
    ```bash
    git clone https://github.com/Anish-17032003/zomato-reels.git
    cd zomato-reels
+
+## 🚀 Live Link
+   - https://zomato-reels-1-frontend.onrender.com
